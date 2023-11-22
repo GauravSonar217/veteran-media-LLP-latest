@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e9f5fcac.css",
+    "main.js": "/static/js/main.2da519f2.js",
+    "static/js/787.ca5deb6d.chunk.js": "/static/js/787.ca5deb6d.chunk.js",
+    "static/media/production_id_5207408 (1080p).mp4": "/static/media/production_id_5207408 (1080p).797de3c63c22abf48b9c.mp4",
+    "static/media/image 46.jpg": "/static/media/image 46.27357b93d08394350745.jpg",
+    "static/media/blog1.jpg": "/static/media/blog1.40d7f0d3263deeefcea1.jpg",
+    "static/media/blog2.jpg": "/static/media/blog2.168b5b8b67f7cc948e90.jpg",
+    "static/media/errorImg.jpg": "/static/media/errorImg.bc967e89c4abe64b2645.jpg",
+    "static/media/image 17.jpg": "/static/media/image 17.c7b8bee848c1e9135609.jpg",
+    "static/media/Our services img.png": "/static/media/Our services img.704b0a01e752dff42de6.png",
+    "static/media/Group 96.png": "/static/media/Group 96.6abaa86d0c4402cc0aba.png",
+    "static/media/masterLH.png": "/static/media/masterLH.9961e40ccad22c478a27.png",
+    "static/media/harisons.png": "/static/media/harisons.4636139fbfe4540afc89.png",
+    "static/media/logo.svg": "/static/media/logo.14d2cbb4e9fab7aa26699b231a544ba0.svg",
+    "static/media/phone.svg": "/static/media/phone.4af23a3cec4abfeca1b392452373c92e.svg",
+    "static/media/mail.svg": "/static/media/mail.bb6ac7fedd81c4693d47b6865452efae.svg",
+    "static/media/link.svg": "/static/media/link.eedacbd41552a15656459a03c7145a46.svg",
+    "index.html": "/index.html",
+    "static/media/facebook.svg": "/static/media/facebook.49bfe814dca9f6c47dc8eec611a54350.svg",
+    "static/media/hamburger.svg": "/static/media/hamburger.1e7953a4c4bb9ceceff1429121a4b497.svg",
+    "main.e9f5fcac.css.map": "/static/css/main.e9f5fcac.css.map",
+    "main.2da519f2.js.map": "/static/js/main.2da519f2.js.map",
+    "787.ca5deb6d.chunk.js.map": "/static/js/787.ca5deb6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9f5fcac.css",
+    "static/js/main.2da519f2.js"
+  ]
+}

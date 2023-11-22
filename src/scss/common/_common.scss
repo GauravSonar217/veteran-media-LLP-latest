@@ -1,0 +1,63 @@
+.container {
+  max-width: 1499px;
+  width: 100%;
+  @include veryLarge {
+    max-width: 85%;
+  }
+}
+.innerCont {
+  max-width: 1280px;
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+// scrollbar
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $red-950;
+}
+
+// soft scroll
+#content {
+  overflow: auto;
+  height: 100vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-snap-points-y: repeat(100%);
+  scroll-snap-type: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+section {
+  padding: 100px auto;
+}
+
+.sectionPadding {
+  padding: 80px 0px;
+}

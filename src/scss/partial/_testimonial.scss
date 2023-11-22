@@ -1,0 +1,42 @@
+/* TestimonialSlider.css */
+
+.testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.testimonials-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: calc(100% + 20px); /* Adjust for scrollbar width */
+}
+
+.testimonial {
+  flex: 0 0 calc(33.33% - 20px); /* 33.33% width for each testimonial */
+  margin-right: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease;
+  height: 500px;
+}
+
+.slider-controls {
+  margin-top: 20px;
+}
+
+.slider-controls button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+
+.slider-controls button:hover {
+  background-color: #0056b3;
+}

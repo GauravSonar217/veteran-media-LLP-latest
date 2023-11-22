@@ -1,0 +1,152 @@
+.serviceSec {
+  width: 100%;
+  position: relative;
+  #serviceSec {
+    height: 100%;
+
+    #innercont {
+      width: 100%;
+      border: 1px solid blue;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      // grid-gap: 3rem;
+      @include largeDevice {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2rem;
+      }
+      @include mediumDevice {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1.5rem;
+      }
+      @include smallDevice {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+      }
+      @include extraSmallDevice {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+      }
+      .serviceImgCont {
+        border: 1px solid red;
+        @include flexrow;
+        @include extraLargeDevice {
+          padding: 3.5rem 5rem;
+        }
+
+        @include largeDevice {
+          width: 50%;
+          margin: 0 auto;
+        }
+        @include mediumDevice {
+          width: 70%;
+          margin: 0 auto;
+        }
+        @include smallDevice {
+          width: 100%;
+          margin: 0 auto;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+
+          @include largeDevice {
+            width: 100%;
+            height: 100%;
+          }
+          @include mediumDevice {
+            width: 100%;
+            height: 100%;
+          }
+          @include smallDevice {
+            width: 100%;
+            height: 100%;
+          }
+          @include extraSmallDevice {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .serviceTextCont {
+        border: 1px solid green;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0 3rem;
+        @include mediumDevice {
+          grid-gap: 0 3rem;
+        }
+        @include smallDevice {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        @include extraSmallDevice {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .serve {
+          @include smallDevice {
+            text-align: center;
+            padding: 0 3rem;
+          }
+          @include extraSmallDevice {
+            text-align: center;
+            padding: 0;
+          }
+          &:first-child {
+            @include flexrow;
+            flex-direction: column;
+            align-items: start;
+            border: 1px solid red;
+          }
+
+          &:last-child {
+            @include flexrow;
+            flex-direction: column;
+            align-items: start;
+            border: 1px solid red;
+            h2 {
+              visibility: hidden;
+            }
+          }
+          h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            @include mediumDevice {
+              font-size: 2.2rem;
+            }
+            @include extraSmallDevice {
+              font-size: 1.8rem;
+            }
+          }
+          h3 {
+            width: 100%;
+            font-size: 1.25rem;
+            font-weight: 400;
+            padding: 1rem 0;
+            text-align: left;
+            color: $black;
+            border-bottom: 2px solid $black;
+            // border: 1px solid green;
+            @include smallDevice {
+              padding: 0.8rem 0;
+            }
+            @include extraSmallDevice {
+              padding: 0.6rem 0;
+            }
+            a {
+              color: $black;
+              @include mediumDevice {
+                font-size: 1.2rem;
+              }
+              @include extraSmallDevice {
+                font-size: 1.09rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+.faqSection {
+  width: 100%;
+  height: 100%;
+
+  #faqSec {
+    width: 100%;
+    height: 100%;
+
+    #faqInner {
+      width: 100%;
+      text-align: center;
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+      }
+      h4 {
+        font-size: 1.5rem;
+      }
+
+      .accordion {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+        @include largeDevice {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1.5rem;
+        }
+        @include mediumDevice {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1.5rem;
+        }
+        @include smallDevice {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1.5rem;
+        }
+        @include extraSmallDevice {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1.5rem;
+        }
+
+        .accr-content {
+          border: 1px solid rgba(176, 176, 192, 0.3);
+          border-radius: 1.5rem;
+          padding: 1rem 1rem;
+          box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+            -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+          @include largeDevice {
+            width: 90%;
+            margin: 0 auto;
+          }
+          @include mediumDevice {
+            width: 90%;
+            margin: 0 auto;
+          }
+          @include smallDevice {
+            width: 100%;
+          }
+
+          .accr-header {
+            @include flexrow;
+            justify-content: space-between;
+            min-height: 2rem;
+            padding: 0 1rem;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            @include smallDevice {
+              padding: 0;
+            }
+            @include extraSmallDevice {
+              padding: 0;
+            }
+
+            .title {
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: #333;
+              text-align: left;
+              @include smallDevice {
+                font-size: 1.1rem;
+              }
+              @include extraSmallDevice {
+                font-size: 0.95rem;
+              }
+            }
+            img {
+              @include extraSmallDevice {
+                width: 1.5rem;
+              }
+            }
+          }
+          .description {
+            height: 0;
+            padding: 0rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #333;
+            transition: all 0.2s linear;
+            text-align: left;
+            overflow: hidden;
+            @include extraSmallDevice {
+              font-size: 0.9rem;
+              padding: 0;
+            }
+            @include smallDevice {
+              font-size: 1rem;
+              padding: 0;
+            }
+          }
+        }
+        .accordion {
+       
+          width: 100%;
+          .faq {
+            width: 100%;
+           
+         
+
+            .accordion-item {
+              width: 100%;
+              // background-color: blue !important;
+
+              .accordion-header {
+                // background-color: red !important;
+                font-size: 5rem !important;
+
+                .accordion-button {
+                  width: 100%;
+
+                  background-color: yellow !important;
+
+                  &::after {
+                    background-image: url(../media/png/plus.png);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .open {
+          padding-bottom: 1rem;
+          .accr-header {
+            min-height: 3rem;
+          }
+        }
+      }
+    }
+  }
+}

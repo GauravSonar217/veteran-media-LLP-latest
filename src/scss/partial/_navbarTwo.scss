@@ -1,0 +1,371 @@
+// @import '../../sass/breakPoints.scss';
+
+nav {
+    // border: 1px solid red;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+
+    &>#navbar {
+        border: 3px solid rgb(55, 0, 255);
+        height: 7rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &>a {
+            &>img {
+                width: 15rem;
+            }
+        }
+
+        &>.nav-links {
+            border: 1px solid blue;
+            position: relative;
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            transition: .2s;
+            // color: #000 !important;
+
+            @include mediumDevice {
+                position: absolute;
+                top: 7rem;
+                // right: 0;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                background-color: #CCCCCC;
+                // width: 0rem;
+                width: 100%;
+                height: calc(100vh - 7rem);
+                // height: 0;
+                gap: 0rem;
+                transition: .2s ease;
+                border: 2px solid red;
+            }
+
+            &>li {
+                @include mediumDevice {
+                    width: 100%;
+                    // background-color: rgb(0, 13, 255);
+                }
+
+                @include mobile {
+                    text-align: center;
+                }
+
+                &>a {
+                    // color: $white;
+
+                    &:hover{
+                        color: $secondary-color;
+                    }
+
+                    @include mediumDevice {
+                        color: #000;
+                        display: inline-block;
+                        // width: 100%;
+                        font-size: 1.4rem;
+                        padding: 1.1rem 2rem;
+                        text-transform: uppercase;
+                        // background-color: blue;
+
+                        &:hover {
+                            background-color: $secondary-color;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+
+
+
+            &>div {
+                display: none;
+                background-color: red;
+            }
+
+           
+
+            @include mediumDevice {
+                &.nav-links-active {
+                    // width: 20rem;
+                    background-color: yellow;
+
+                    @include mobile {
+                        width: 100%;
+                    }
+
+                    &>div {
+                        // border: 1px solid red;
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        padding-left: 2rem;
+                        padding-bottom: 4rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: end;
+
+                        &>p {
+                            // border: 1px solid red;
+                            font-size: 1.2rem;
+                            font-weight: 300;
+                            // line-height: 2.4rem;
+
+                            &>a {
+                                color: $primary-color;
+
+                                &:hover {
+                                    color: $red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // &>.qr-code{
+        //     width: 7rem;
+        //     height: 6rem;
+        //     border: 1px solid red;
+        //     background-color: #fff;
+        // }
+
+        &>.menu-bar {
+            // border: 1px solid red;
+            // display: none;
+            background-color: #2608179a;
+            height: 3.4rem;
+            width: 9rem;
+            cursor: pointer;
+
+            @include mediumDevice {
+                display: flex;
+                transition: width .2s ease-out;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            &>.menu-name {
+                color: $white;
+                padding-left: .5rem;
+                text-transform: uppercase;
+                line-height: 3rem;
+            }
+
+            &>.menu-icon {
+                display: flex;
+                width: 3.5rem;
+                height: 3rem;
+                position: relative;
+                justify-content: center;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background-color: $white;
+                    height: .2rem;
+                    width: 2rem;
+                    box-shadow: 0 8px 0 $white;
+                    top: .6rem;
+                    transition: .3s ease;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: $white;
+                    height: .2rem;
+                    width: 2rem;
+                    bottom: .6rem;
+                    transition: .3s ease;
+                }
+
+                &.menu-active {
+                    &::before {
+                        top: 1.4rem;
+                        rotate: 45deg;
+                        box-shadow: 0 0 $primary-color;
+                    }
+
+                    &::after {
+                        bottom: 1.4rem;
+                        rotate: -45deg;
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: #260817;
+            }
+
+            @include mediumDevice {
+                &.menu-bar-active {
+                    background-color: #CCCCCC;
+                    padding: .2rem 1.5rem;
+                    text-align: end;
+                    position: absolute;
+                    right: 0;
+                    height: 7rem;
+                    width: 20rem;
+
+                    @include mediumDevice {
+                        width: 100%;
+                    }
+
+                    &:hover {
+                        background-color: #CCCCCC;
+                    }
+
+                    &>.menu-name {
+                        color: $primary-color;
+                        font-weight: 500;
+                    }
+
+                    &>.menu-icon {
+
+                        &::before,
+                        &::after {
+                            background-color: $primary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// @media (max-width: 768px) {
+//     nav {
+//         &>#navbar {
+
+//             &>.nav-links {
+//                 position: absolute;
+//                 top: 7rem;
+//                 right: 0;
+//                 display: flex;
+//                 flex-direction: column;
+//                 background-color: #CCCCCC;
+//                 width: 0rem;
+//                 height: calc(100vh - 7rem);
+//                 gap: 0rem;
+//                 transition: .2s ease;
+
+//                 &>li {
+//                     width: 100%;
+
+//                     &>a {
+//                         color: #000;
+//                         display: inline-block;
+//                         width: 100%;
+//                         font-size: 1.4rem;
+//                         padding: 1.1rem 2rem;
+//                         text-transform: uppercase;
+
+//                         &:hover {
+//                             background-color: $secondary-color;
+//                         }
+//                     }
+//                 }
+
+//                 &.nav-links-active {
+//                     width: 20rem;
+
+//                     &>div {
+//                         // border: 1px solid red;
+//                         display: block;
+//                         height: 100%;
+//                         width: 100%;
+//                         padding-left: 2rem;
+//                         padding-bottom: 4rem;
+//                         display: flex;
+//                         flex-direction: column;
+//                         justify-content: end;
+
+//                         &>p {
+//                             // border: 1px solid red;
+//                             font-size: 1.2rem;
+//                             font-weight: 300;
+//                             // line-height: 2.4rem;
+
+//                             &>a {
+//                                 color: $primary-color;
+
+//                                 &:hover {
+//                                     color: $red;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//             &>.menu-bar {
+//                 display: flex;
+//                 transition: width .2s ease-out;
+//                 align-items: center;
+//                 justify-content: space-between;
+//                 position: relative;
+
+
+//                 &.menu-bar-active {
+//                     background-color: #CCCCCC;
+//                     padding: .2rem 1.5rem;
+//                     text-align: end;
+//                     position: absolute;
+//                     right: 0;
+//                     height: 7rem;
+//                     width: 20rem;
+
+//                     &:hover {
+//                         background-color: #CCCCCC;
+//                     }
+
+//                     &>.menu-name {
+//                         color: $primary-color;
+//                         font-weight: 500;
+//                     }
+
+//                     &>.menu-icon {
+
+//                         &::before,
+//                         &::after {
+//                             background-color: $primary-color;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+// @media (max-width: 320px) {
+//     nav {
+//         &>#navbar {
+//             &>.nav-links {
+//                 &.nav-links-active {
+//                     width: 100%;
+//                 }
+
+//                 &>li {
+//                     text-align: center;
+//                 }
+//             }
+
+//             &>.menu-bar {
+//                 &.menu-bar-active {
+//                     width: 100%;
+//                 }
+//             }
+//         }
+//     }
+// }

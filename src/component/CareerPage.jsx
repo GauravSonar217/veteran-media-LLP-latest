@@ -11,18 +11,19 @@ function CareerPage() {
 
   useEffect(() => {
     const slider = document.querySelector(".slider");
+    const sliderbtn = document.querySelector(".slider-button");
     slider.addEventListener("click", function(){
-        if (toggle === true) {
+        if (toggle) {
           slider.classList.remove("active");
-          setToggle(false);
-          console.log(slider);
+          sliderbtn.innerHTML = "x";
+          setToggle(!toggle);
           console.log("toggle removed");
-        }
-        if (toggle === false) {
+        }else{
           slider.classList.add("active");
-          setToggle(true);
-          console.log(slider);
+          sliderbtn.innerHTML = "&#10003;";
+          setToggle(!toggle);
           console.log("toggle added");
+
         }
         // console.log(slider);
     });

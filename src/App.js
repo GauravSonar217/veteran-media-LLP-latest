@@ -7,6 +7,7 @@ import ErrorPage from './component/ErrorPage';
 import CareerPage from './component/CareerPage';
 import Footer from './component/Footer';
 import Contact from './component/Contact';
+import PortfolioPage from './component/PortFolio';
 import "../src/App.css";
 
 
@@ -39,7 +40,11 @@ function App() {
           element: <CareerPage />,
         },
         {
-          path: "/contact",
+          path: "/portfolio/",
+          element: <PortfolioPage />,
+        },
+        {
+          path: "/contact/",
           element: <Contact />,
         },
       ],

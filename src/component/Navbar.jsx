@@ -14,6 +14,7 @@ import { HashLink } from "react-router-hash-link";
 function Navbar() {
   const [selectedService, setSelectedService] = useState(serviceData[0]);
   const [showMenu, setShowMenu] = useState(false);
+  console.log(selectedService);
 
   const handleClick = (service) => {
     setSelectedService(service);
@@ -64,7 +65,9 @@ function Navbar() {
               </HashLink>
             </li>
             <li className="nav-item">
-              <HashLink className="nav-link">Projects</HashLink>
+              <HashLink className="nav-link" to="/portfolio/#projectSec">
+                Projects
+              </HashLink>
             </li>
             <li className="nav-item serviceLink">
               <HashLink className="nav-link">Services</HashLink>
@@ -95,7 +98,7 @@ function Navbar() {
               </div>
             </li>
             <li className="nav-item">
-              <HashLink className="nav-link" to="/career/#careerPage">
+              <HashLink className="nav-link" to="/career/#careerHead">
                 contact
               </HashLink>
             </li>

@@ -28,34 +28,26 @@ function Template() {
   const [showVideo, setShowVideo] = useState(false);
   const [showbtn, setShowbtn] = useState(false);
   const [showMap, setShowMap] = useState(false);
-  useEffect(() => {
-
-    let btn = document.querySelector(".accordion-button");
-    console.log(btn);
-    btn.addEventListener("click", function () {
-      console.log("btn clicked");
-      btn.classList.toggle("mystyle");
-      btn.classList.toggle("click");
-      console.log(btn);
-
-      // btn.style.backgroundImage = url("../media/png/minus.png");
-    });
-  }, []);
+  const [counter, setCounter] = useState(false);
+  // useEffect(() => {
+  //   let btn = document.querySelector(".accordion-button");
+  //   console.log(btn);
+  //   btn.addEventListener("click", function () {
+  //     console.log("btn clicked");
+  //     btn.classList.toggle("mystyle");
+  //     btn.classList.toggle("click");
+  //     console.log(btn);
+  //   });
+  // }, []);
 
   useEffect(() => {
     function moveCursor(dets) {
       const cursor = document.getElementById("cursor");
       const imgCont = document.getElementById("imgCont");
       const imgContRect = imgCont.getBoundingClientRect();
-      // const mover = document.querySelectorAll(".mover");
-      // console.log(mover);
-      // const workCont = document.querySelectorAll(".workImgBox");
-      // const workContRect = workCont.getBoundingClientRect();
 
       const mouseX = dets.clientX - imgContRect.left;
       const mouseY = dets.clientY - imgContRect.top;
-      // const mouseA = dets.clientX - workContRect.left;
-      // const mouseB = dets.clientY - workContRect.top;
 
       if (
         mouseX >= 0 &&
@@ -66,64 +58,88 @@ function Template() {
         cursor.style.left = mouseX + "px";
         cursor.style.top = mouseY + "px";
       }
-      // if (
-      //   mouseA >= 0 &&
-      //   mouseA <= workContRect.width &&
-      //   mouseB >= 0 &&
-      //   mouseB <= workContRect.height
-      // ) {
-      //   mover.style.left = mouseA + "px";
-      //   mover.style.top = mouseB + "px";
-      // }
     }
     console.log("moving");
     console.log("moving inside work container");
     const imgCont = document.getElementById("imgCont");
     imgCont.addEventListener("mousemove", moveCursor);
-    // const workCont = document.querySelector(".workImgBox");
-    // workCont.addEventListener("mousemove", moveCursor);
-
     return () => {
       imgCont.removeEventListener("mousemove", moveCursor);
-      // workCont.removeEventListener("mousemove", moveCursor);
     };
   }, []);
-
-  useEffect(() => {
-    const accrContent = document.querySelectorAll(".accr-content");
-    console.log(accrContent);
-
-    accrContent.forEach((item, index) => {
-      let header = item.querySelector(".accr-header");
-      console.log(item[index]);
-      header.addEventListener("click", () => {
-        item.classList.toggle("open");
-        let desc = item.querySelector(".description");
-        // desc.style.display = "block";
-
-        if (item.classList.contains("open")) {
-          desc.style.display = "block";
-          desc.style.height = `${desc.scrollHeight}px`;
-          // item.style.backgroundColor = "#161616";
-          item.style.color = "#fff !important";
-          console.log(item);
-          // item.querySelector("img").setAttribute("src", "{ minus }");
+  useEffect(()=>{
+    document.querySelectorAll('.faq-card').forEach(card => {
+      const question = card.querySelector('.question');
+      const answer = card.querySelector('.answer');
+      const icon = card.querySelector('.icon');
+      const toggle = card.querySelector('.toggle');
+      const h3 = card.querySelector('h3');
+      const p = card.querySelector('p');
+    
+      let defaultIconColor = icon.style.color;
+      let defaultCardColor = card.style.backgroundColor;
+      let defaultH2Color = h3.style.color;
+      let defaultPColor = p.style.color;
+      let defaultToggleColor = toggle.style.backgroundColor; // Store the default toggle color
+    
+      question.addEventListener('click', () => {
+        if (answer.style.display === 'block') {
+          answer.style.display = 'none';
+          icon.textContent = '+';
+          icon.style.color = defaultIconColor;
+          card.style.backgroundColor = 'white';
+          h3.style.color = defaultH2Color;
+          p.style.color = defaultPColor;
+          toggle.style.backgroundColor = defaultToggleColor; // Restore the default toggle color
         } else {
-          desc.style.height = "0px";
-          // item.querySelector("img").setAttribute("src", "{ plus }");
-          // desc.style.display = "none";
+          answer.style.display = 'block';
+          icon.textContent = '-';
+          icon.style.color = '#524FD5';
+          toggle.style.backgroundColor = '#fff'; // Change toggle background color to the specified color
+          card.style.backgroundColor = 'black';
+          h3.style.color = 'white';
+          p.style.color = 'white';
         }
       });
     });
-  }, []);
+
+  },[]);
+
+  // useEffect(() => {
+  //   const accrContent = document.querySelectorAll(".accr-content");
+  //   console.log(accrContent);
+
+  //   accrContent.forEach((item, index) => {
+  //     let header = item.querySelector(".accr-header");
+  //     console.log(item[index]);
+  //     header.addEventListener("click", () => {
+  //       item.classList.toggle("open");
+  //       let desc = item.querySelector(".description");
+  //       // desc.style.display = "block";
+
+  //       if (item.classList.contains("open")) {
+  //         desc.style.display = "block";
+  //         desc.style.height = `${desc.scrollHeight}px`;
+  //         // item.style.backgroundColor = "#161616";
+  //         item.style.color = "#fff !important";
+  //         console.log(item);
+  //         // item.querySelector("img").setAttribute("src", "{ minus }");
+  //       } else {
+  //         desc.style.height = "0px";
+  //         // item.querySelector("img").setAttribute("src", "{ plus }");
+  //         // desc.style.display = "none";
+  //       }
+  //     });
+  //   });
+  // }, []);
 
   useEffect(() => {
-    function counter() {
+    const counter = () => {
       var a = 0;
       var b = 0;
       var c = 0;
       var d = 0;
-      setInterval(function () {
+      const clientCounter = setInterval(function () {
         a = a + Math.floor(Math.random() * 100);
         if (a < 700) {
           document.querySelector("#one").innerHTML = a + "+";
@@ -132,7 +148,7 @@ function Template() {
           document.querySelector("#one").innerHTML = a + "+";
         }
       }, 100);
-      setInterval(function () {
+      const regularCLient = setInterval(function () {
         b = b + Math.floor(Math.random() * 10);
         if (b < 30) {
           document.querySelector("#two").innerHTML = b + "+";
@@ -141,7 +157,7 @@ function Template() {
           document.querySelector("#two").innerHTML = b + "+";
         }
       }, 100);
-      setInterval(function () {
+      const projectDone = setInterval(function () {
         c = c + Math.floor(Math.random() * 100);
         if (c < 999) {
           document.querySelector("#three").innerHTML = c + "+";
@@ -150,7 +166,7 @@ function Template() {
           document.querySelector("#three").innerHTML = c + "+";
         }
       }, 100);
-      setInterval(function () {
+      const experience = setInterval(function () {
         d = d + Math.floor(Math.random() * 2);
         if (d < 5) {
           document.querySelector("#four").innerHTML = d;
@@ -159,8 +175,18 @@ function Template() {
           document.querySelector("#four").innerHTML = d;
         }
       }, 100);
-    }
-    counter();
+
+      return () => {
+        clearInterval(clientCounter);
+        clearInterval(regularCLient);
+        clearInterval(projectDone);
+        clearInterval(experience);
+      };
+    };
+    const intervalFunctions = counter();
+    return () => {
+      intervalFunctions();
+    };
   }, []);
 
   const expandVideo = () => {
@@ -182,52 +208,17 @@ function Template() {
     console.log(mapShow);
     console.log(mapShadow);
     mapShow.addEventListener("click", function () {
-      if(showMap === false){
+      if (showMap === false) {
         mapShadow.style.visibility = "hidden";
         contactBox.style.backgroundColor = "black";
         setShowMap(true);
       }
-      if(showMap === true){
+      if (showMap === true) {
         mapShadow.style.visibility = "visible";
         setShowMap(false);
       }
     });
   }, [showMap]);
-
-  // useEffect(() => {
-  //   (function () {
-  //     // "use strict";
-
-  //     var carousels = function () {
-  //       $(".owl-carousel1").owlCarousel({
-  //         loop: true,
-  //         center: true,
-  //         margin: 0,
-  //         responsiveClass: true,
-  //         nav: false,
-  //         responsive: {
-  //           0: {
-  //             items: 1,
-  //             nav: false,
-  //           },
-  //           680: {
-  //             items: 2,
-  //             nav: false,
-  //             loop: false,
-  //           },
-  //           1000: {
-  //             items: 3,
-  //             nav: true,
-  //           },
-  //         },
-  //       });
-  //     };
-
-  //     (function ($) {
-  //       carousels();
-  //     })("jQuery");
-  //   })();
-  // }, []);
 
   return (
     <React.Fragment>
@@ -331,7 +322,6 @@ function Template() {
               <div className="workBox">
                 <div className="workImgBox">
                   <img src={workImg} alt="workdone image" />
-                
                 </div>
                 <div className="workTextBox">
                   <h3>Packaging Desing </h3>
@@ -341,7 +331,6 @@ function Template() {
               <div className="workBox">
                 <div className="workImgBox">
                   <img src={workImg} alt="workdone image" />
-                 
                 </div>
                 <div className="workTextBox">
                   <h3>Packaging Desing </h3>
@@ -351,7 +340,6 @@ function Template() {
               <div className="workBox">
                 <div className="workImgBox">
                   <img src={workImg} alt="workdone image" />
-                 
                 </div>
                 <div className="workTextBox">
                   <h3>Packaging Desing </h3>
@@ -361,7 +349,6 @@ function Template() {
               <div className="workBox">
                 <div className="workImgBox">
                   <img src={workImg} alt="workdone image" />
-                
                 </div>
                 <div className="workTextBox">
                   <h3>Packaging Desing </h3>
@@ -447,7 +434,9 @@ function Template() {
           <div className="innerCont" id="aboutInner">
             <div className="aboutImgCont" id="imgCont">
               <img src={aboutImg} alt="about section image" />
-              <div id="cursor"><a href="">Read More</a></div>
+              <div id="cursor">
+                <a href="">Read More</a>
+              </div>
             </div>
             <div className="aboutTextCont">
               <h3>About us</h3>
@@ -511,7 +500,107 @@ function Template() {
           </div>
         </div>
       </section>
-      <section className="faqSection sectionPadding">
+      <section id="faq" className="sectionPadding">
+        <div class="container" id="faqSection">
+          <h4>More Information</h4>
+          <h2>Frequently asked questions</h2>
+          <div class="row my-4" id="faqCont">
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-1">
+                <div class="question">
+                  <h3>What services does Veteran Media offer?</h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Veteran Media provides a comprehensive range of services tailored to meet your specific needs. Our offerings include Services.html designed to empower businesses and individuals in achieving their goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-2">
+                <div class="question">
+                  <h3>
+                  Lorem Ipsum is simply dummy text of the?
+                  </h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-3">
+                <div class="question">
+                  <h3>Lorem Ipsum is simply dummy text of the?</h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-4">
+                <div class="question">
+                  <h3>Lorem Ipsum is simply dummy text of the?</h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-5">
+                <div class="question">
+                  <h3>Lorem Ipsum is simply dummy text of the?</h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+              <div class="faq-card" id="faq-card-6">
+                <div class="question">
+                  <h3>Lorem Ipsum is simply dummy text of the?</h3>
+                  <div class="toggle">
+                    <span class="icon">+</span>
+                  </div>
+                </div>
+                <div class="answer">
+                  <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <section className="faqSection sectionPadding">
         <div className="container" id="faqSec">
           <div className="innerCont" id="faqInner">
             <h4>More Information</h4>
@@ -618,11 +707,10 @@ function Template() {
                   </Accordion.Item>
                 </div>
               </Accordion>
-              
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="blogSection sectionPadding">
         <div className="container" id="blogSec">
           <div className="innerCont" id="blogCont">
@@ -664,100 +752,48 @@ function Template() {
         ></iframe>
         <div id="mapShadow" className="shadow"></div>
         {/* <div className="container" id="outerCont"> */}
-          <div className="innerCont" id="contactInner">
-            <div className="contactTextBox">
-              <h3 id="mapShower">
-                <p>Look at the google maps</p>
-                <img src={arrow} alt="arrow" />
-              </h3>
-              <div className="contactText">
-                <h2 id="head">Contact Us</h2>
-                <p>
-                  Ready to take the next step in transforming your brand?
-                  Whether you have questions, ideas bubbling, or are ready to
-                  embark on a creative journey with us, we're here for you.
-                </p>
-              </div>
-            </div>
-            <div className="contactFormCont">
-              <div className="contactForm">
-                <h2>Enquiry Form</h2>
-                <form>
-                  <label htmlFor="name">Name*</label>
-                  <input type="text" name="name" id="name" />
-                  <label htmlFor="email">Email*</label>
-                  <input type="email" name="email" id="email" />
-                  <label htmlFor="query">What are you looking for*</label>
-                  <input type="text" name="query" id="query" />
-                  <label htmlFor="message">Message*</label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="2"
-                  ></textarea>
-                  <div className="uploadCont">
-                    <input type="file" id="myFile" name="filename" />
-                    <button>Send Message</button>
-                  </div>
-                </form>
-              </div>
+        <div className="innerCont" id="contactInner">
+          <div className="contactTextBox">
+            <h3 id="mapShower">
+              <p>Look at the google maps</p>
+              <img src={arrow} alt="arrow" />
+            </h3>
+            <div className="contactText">
+              <h2 id="head">Contact Us</h2>
+              <p>
+                Ready to take the next step in transforming your brand? Whether
+                you have questions, ideas bubbling, or are ready to embark on a
+                creative journey with us, we're here for you.
+              </p>
             </div>
           </div>
+          <div className="contactFormCont">
+            <div className="contactForm">
+              <h2>Enquiry Form</h2>
+              <form>
+                <label htmlFor="name">Name*</label>
+                <input type="text" name="name" id="name" />
+                <label htmlFor="email">Email*</label>
+                <input type="email" name="email" id="email" />
+                <label htmlFor="query">What are you looking for*</label>
+                <input type="text" name="query" id="query" />
+                <label htmlFor="message">Message*</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="2"
+                ></textarea>
+                <div className="uploadCont">
+                  <input type="file" id="myFile" name="filename" />
+                  <button>Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         {/* </div> */}
       </section>
-      {/* <section className="accr">
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Accordion Item #1</Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>Accordion Item #2</Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="2">
-            <Accordion.Header>Accordion Item #2</Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="3">
-            <Accordion.Header>Accordion Item #2</Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      </section> */}
     </React.Fragment>
   );
 }

@@ -464,9 +464,12 @@
         input {
           padding: 1rem;
           border-radius: 12px;
-          border: 1px solid #e8e8e8;
+          border: 2px solid #e8e8e8;
           outline: none;
           font-size: 1rem;
+          &:active{
+            border: 2px solid #b1df41;
+          }
           @include extraSmallDevice{
             padding: 0.8rem;
           }

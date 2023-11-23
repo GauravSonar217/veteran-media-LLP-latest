@@ -6,7 +6,6 @@
 
     #innercont {
       width: 100%;
-      border: 1px solid blue;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       // grid-gap: 3rem;
@@ -27,7 +26,6 @@
         grid-gap: 1rem;
       }
       .serviceImgCont {
-        border: 1px solid red;
         @include flexrow;
         @include extraLargeDevice {
           padding: 3.5rem 5rem;
@@ -69,7 +67,6 @@
         }
       }
       .serviceTextCont {
-        border: 1px solid green;
         height: 100%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -85,6 +82,7 @@
         }
 
         .serve {
+          border: 1px solid red;
           @include smallDevice {
             text-align: center;
             padding: 0 3rem;
@@ -97,16 +95,21 @@
             @include flexrow;
             flex-direction: column;
             align-items: start;
-            border: 1px solid red;
           }
 
           &:last-child {
             @include flexrow;
             flex-direction: column;
             align-items: start;
-            border: 1px solid red;
+           
             h2 {
               visibility: hidden;
+              @include smallDevice{
+                display: none;
+              }
+              @include extraSmallDevice{
+                display: none;
+              }
             }
           }
           h2 {

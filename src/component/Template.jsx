@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import TestimonialSlider from "./Testimonial";
+import Swiper from "swiper";
 import Header from "./Header";
 import Accordion from "react-bootstrap/Accordion";
 import playbtn from "../media/png/play.png";
@@ -12,8 +12,6 @@ import prog3 from "../media/png/execution 1.png";
 import prog4 from "../media/png/innovation 1.png";
 import prog5 from "../media/png/creativity 1.png";
 import aboutImg from "../media/jpg/image 46.jpg";
-import plus from "../media/png/plus.png";
-import minus from "../media/png/minus.png";
 import blog1 from "../media/jpg/blog1.jpg";
 import blog2 from "../media/jpg/blog2.jpg";
 import arrow from "../media/png/Vector 1.png";
@@ -23,6 +21,7 @@ import part3 from "../media/png/harisons.png";
 import part4 from "../media/png/masterLH.png";
 import part5 from "../media/png/mahindra.png";
 import part6 from "../media/png/fivestar.png";
+import Testimonial from "./Testimonial";
 
 function Template() {
   const [showVideo, setShowVideo] = useState(false);
@@ -67,71 +66,42 @@ function Template() {
       imgCont.removeEventListener("mousemove", moveCursor);
     };
   }, []);
-  useEffect(()=>{
-    document.querySelectorAll('.faq-card').forEach(card => {
-      const question = card.querySelector('.question');
-      const answer = card.querySelector('.answer');
-      const icon = card.querySelector('.icon');
-      const toggle = card.querySelector('.toggle');
-      const h3 = card.querySelector('h3');
-      const p = card.querySelector('p');
-    
+  useEffect(() => {
+    document.querySelectorAll(".faq-card").forEach((card) => {
+      const question = card.querySelector(".question");
+      const answer = card.querySelector(".answer");
+      const icon = card.querySelector(".icon");
+      const toggle = card.querySelector(".toggle");
+      const h3 = card.querySelector("h3");
+      const p = card.querySelector("p");
+
       let defaultIconColor = icon.style.color;
       let defaultCardColor = card.style.backgroundColor;
       let defaultH2Color = h3.style.color;
       let defaultPColor = p.style.color;
       let defaultToggleColor = toggle.style.backgroundColor; // Store the default toggle color
-    
-      question.addEventListener('click', () => {
-        if (answer.style.display === 'block') {
-          answer.style.display = 'none';
-          icon.textContent = '+';
+
+      question.addEventListener("click", () => {
+        if (answer.style.display === "block") {
+          answer.style.display = "none";
+          icon.textContent = "+";
           icon.style.color = defaultIconColor;
-          card.style.backgroundColor = 'white';
+          card.style.backgroundColor = "white";
           h3.style.color = defaultH2Color;
           p.style.color = defaultPColor;
           toggle.style.backgroundColor = defaultToggleColor; // Restore the default toggle color
         } else {
-          answer.style.display = 'block';
-          icon.textContent = '-';
-          icon.style.color = '#524FD5';
-          toggle.style.backgroundColor = '#fff'; // Change toggle background color to the specified color
-          card.style.backgroundColor = 'black';
-          h3.style.color = 'white';
-          p.style.color = 'white';
+          answer.style.display = "block";
+          icon.textContent = "-";
+          icon.style.color = "#524FD5";
+          toggle.style.backgroundColor = "#fff"; // Change toggle background color to the specified color
+          card.style.backgroundColor = "black";
+          h3.style.color = "white";
+          p.style.color = "white";
         }
       });
     });
-
-  },[]);
-
-  // useEffect(() => {
-  //   const accrContent = document.querySelectorAll(".accr-content");
-  //   console.log(accrContent);
-
-  //   accrContent.forEach((item, index) => {
-  //     let header = item.querySelector(".accr-header");
-  //     console.log(item[index]);
-  //     header.addEventListener("click", () => {
-  //       item.classList.toggle("open");
-  //       let desc = item.querySelector(".description");
-  //       // desc.style.display = "block";
-
-  //       if (item.classList.contains("open")) {
-  //         desc.style.display = "block";
-  //         desc.style.height = `${desc.scrollHeight}px`;
-  //         // item.style.backgroundColor = "#161616";
-  //         item.style.color = "#fff !important";
-  //         console.log(item);
-  //         // item.querySelector("img").setAttribute("src", "{ minus }");
-  //       } else {
-  //         desc.style.height = "0px";
-  //         // item.querySelector("img").setAttribute("src", "{ plus }");
-  //         // desc.style.display = "none";
-  //       }
-  //     });
-  //   });
-  // }, []);
+  }, []);
 
   useEffect(() => {
     const counter = () => {
@@ -198,8 +168,43 @@ function Template() {
     console.log(videoCont);
     playBtn.style.display = "none";
   };
+  function playVideo() {
+    const video = document.getElementById("video");
+    const videoSection = document.getElementById("videoSection");
+    const videoCont = document.getElementById("videoOuter");
+    console.log(videoCont);
+    const playButton = document.querySelector(".play-button");
 
-  useEffect(() => {
+    videoCont.style.height = "100vh"; // Increase section height
+    videoSection.style.width = "100%";
+    videoSection.style.height = "100%";
+    // video.style.visibility = "visible";
+    playButton.style.display = "none";
+
+    video.play();
+  }
+
+  // useEffect(() => {
+  //   let mapShow = document.getElementById("mapShower");
+  //   let mapShadow = document.getElementById("mapShadow");
+  //   let contactBox = document.querySelector(".contactText");
+  //   let head = document.querySelector("#head");
+  //   console.log(contactBox);
+  //   console.log(mapShow);
+  //   console.log(mapShadow);
+  //   mapShow.addEventListener("click", function () {
+  //     if (!showMap) {
+  //       mapShadow.style.visibility = "hidden";
+  //       contactBox.style.backgroundColor = "black";
+  //       setShowMap(true);
+  //     } else {
+  //       mapShadow.style.visibility = "visible";
+  //       contactBox.style.backgroundColor = "transparent";
+  //       setShowMap(false);
+  //     }
+  //   });
+  // }, []);
+  function mapShower() {
     let mapShow = document.getElementById("mapShower");
     let mapShadow = document.getElementById("mapShadow");
     let contactBox = document.querySelector(".contactText");
@@ -208,35 +213,55 @@ function Template() {
     console.log(mapShow);
     console.log(mapShadow);
     mapShow.addEventListener("click", function () {
-      if (showMap === false) {
+      if (!showMap) {
         mapShadow.style.visibility = "hidden";
         contactBox.style.backgroundColor = "black";
         setShowMap(true);
-      }
-      if (showMap === true) {
+      } else {
         mapShadow.style.visibility = "visible";
+        contactBox.style.backgroundColor = "transparent";
         setShowMap(false);
       }
     });
-  }, [showMap]);
+  }
+
+  useEffect(() => {
+    var swiper = new Swiper(".mySwiper", {
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      effect: "fade",
+      autoHeight: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    console.log("slider working");
+  }, []); // Ensure this effect runs only once by passing an empty dependency arra
+
+  // swiper();
 
   return (
     <React.Fragment>
       <Header></Header>
-      <section id="companyPromo">
-        <div className="container" id="promoCont">
-          <img
-            src={playbtn}
-            alt="Play Button"
-            className="play-button"
-            onClick={expandVideo}
-            id="pause"
-          />
-          {showVideo && (
-            <video id="backgroundVideo" loop muted autoPlay>
+      <section className="videoCont">
+        <img
+          src={playbtn}
+          alt="Play Button"
+          className="play-button"
+          onClick={playVideo}
+          id="pause"
+        />
+        <div id="videoOuter">
+          <div class="video-section" id="videoSection">
+            <video id="video" loop muted autoPlay>
               <source src={promovideo} type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
-          )}
+          </div>
         </div>
       </section>
       <section className="counterCont sectionPadding">
@@ -360,6 +385,7 @@ function Template() {
           </div>
         </div>
       </section>
+      <Testimonial></Testimonial>
       <section className="progressSec sectionPadding">
         <div className="container" id="progressSec">
           <div className="innerCont" id="innerProgressSec">
@@ -515,7 +541,10 @@ function Template() {
                 </div>
                 <div class="answer">
                   <p>
-                  Veteran Media provides a comprehensive range of services tailored to meet your specific needs. Our offerings include Services.html designed to empower businesses and individuals in achieving their goals.
+                    Veteran Media provides a comprehensive range of services
+                    tailored to meet your specific needs. Our offerings include
+                    Services.html designed to empower businesses and individuals
+                    in achieving their goals.
                   </p>
                 </div>
               </div>
@@ -523,16 +552,17 @@ function Template() {
             <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
               <div class="faq-card" id="faq-card-2">
                 <div class="question">
-                  <h3>
-                  Lorem Ipsum is simply dummy text of the?
-                  </h3>
+                  <h3>Lorem Ipsum is simply dummy text of the?</h3>
                   <div class="toggle">
                     <span class="icon">+</span>
                   </div>
                 </div>
                 <div class="answer">
                   <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to
                   </p>
                 </div>
               </div>
@@ -547,7 +577,10 @@ function Template() {
                 </div>
                 <div class="answer">
                   <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to
                   </p>
                 </div>
               </div>
@@ -562,7 +595,10 @@ function Template() {
                 </div>
                 <div class="answer">
                   <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to
                   </p>
                 </div>
               </div>
@@ -577,7 +613,10 @@ function Template() {
                 </div>
                 <div class="answer">
                   <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to
                   </p>
                 </div>
               </div>
@@ -592,7 +631,10 @@ function Template() {
                 </div>
                 <div class="answer">
                   <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to
                   </p>
                 </div>
               </div>
@@ -600,117 +642,6 @@ function Template() {
           </div>
         </div>
       </section>
-      {/* <section className="faqSection sectionPadding">
-        <div className="container" id="faqSec">
-          <div className="innerCont" id="faqInner">
-            <h4>More Information</h4>
-            <h2>Frequently asked questions</h2>
-            <div className="accordion">
-              <div className="accr-content">
-                <div className="accr-header">
-                  <h3 className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </h3>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <div className="accr-content">
-                <div className="accr-header">
-                  <span className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </span>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <div className="accr-content">
-                <div className="accr-header">
-                  <span className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </span>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <div className="accr-content">
-                <div className="accr-header">
-                  <span className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </span>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <div className="accr-content">
-                <div className="accr-header">
-                  <span className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </span>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <div className="accr-content">
-                <div className="accr-header">
-                  <span className="title">
-                    Lorem Ipsum is simply dummy text of the?
-                  </span>
-                  <img src={plus} alt="plus icon" />
-                </div>
-                <p className="description">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to
-                </p>
-              </div>
-              <Accordion>
-                <div className="faq">
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>Accordion Item #1</Accordion.Header>
-                    <Accordion.Body>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </div>
-              </Accordion>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <section className="blogSection sectionPadding">
         <div className="container" id="blogSec">
           <div className="innerCont" id="blogCont">
@@ -742,57 +673,46 @@ function Template() {
         </div>
       </section>
       <section className="contactSection">
+        <div className="contactTextBox">
+          <div className="contactText">
+            <h2 id="head">Contact Us</h2>
+            <p>
+              Ready to take the next step in transforming your brand? Whether
+              you have questions, ideas bubbling, or are ready to embark on a
+              creative journey with us, we're here for you.
+            </p>
+          </div>
+        </div>
         <iframe
           className="contactMap"
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3748.406429425029!2d73.8036145!3d20.0334121!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddea323f2ad1ef%3A0xba3a9388a398fa65!2sVeteran%20Media%20Solutions%20LLP!5e0!3m2!1sen!2sin!4v1700457867538!5m2!1sen!2sin"
           style={{ border: 0 }}
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
         <div id="mapShadow" className="shadow"></div>
-        {/* <div className="container" id="outerCont"> */}
-        <div className="innerCont" id="contactInner">
-          <div className="contactTextBox">
-            <h3 id="mapShower">
-              <p>Look at the google maps</p>
-              <img src={arrow} alt="arrow" />
-            </h3>
-            <div className="contactText">
-              <h2 id="head">Contact Us</h2>
-              <p>
-                Ready to take the next step in transforming your brand? Whether
-                you have questions, ideas bubbling, or are ready to embark on a
-                creative journey with us, we're here for you.
-              </p>
+        <h3 id="mapShower" onClick={mapShower}>
+          <p>Look at the google map</p>
+          <img src={arrow} alt="arrow" />
+        </h3>
+        <div className="contactForm">
+          <h2>Enquiry Form</h2>
+          <form>
+            <label htmlFor="name">Name*</label>
+            <input type="text" name="name" id="name" />
+            <label htmlFor="email">Email*</label>
+            <input type="email" name="email" id="email" />
+            <label htmlFor="query">What are you looking for*</label>
+            <input type="text" name="query" id="query" />
+            <label htmlFor="message">Message*</label>
+            <textarea name="message" id="message"></textarea>
+            <div className="uploadCont">
+              <input type="file" id="myFile" name="filename" />
+              <button>Send Message</button>
             </div>
-          </div>
-          <div className="contactFormCont">
-            <div className="contactForm">
-              <h2>Enquiry Form</h2>
-              <form>
-                <label htmlFor="name">Name*</label>
-                <input type="text" name="name" id="name" />
-                <label htmlFor="email">Email*</label>
-                <input type="email" name="email" id="email" />
-                <label htmlFor="query">What are you looking for*</label>
-                <input type="text" name="query" id="query" />
-                <label htmlFor="message">Message*</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="2"
-                ></textarea>
-                <div className="uploadCont">
-                  <input type="file" id="myFile" name="filename" />
-                  <button>Send Message</button>
-                </div>
-              </form>
-            </div>
-          </div>
+          </form>
         </div>
-        {/* </div> */}
       </section>
     </React.Fragment>
   );

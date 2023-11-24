@@ -1,7 +1,7 @@
 .container {
   max-width: 1499px;
   width: 100%;
-  border: 1px solid red;
+  // border: 1px solid red;
   @include veryLarge {
     max-width: 85%;
   }
@@ -10,7 +10,7 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid blue;
+  // border: 1px solid blue;
 }
 
 a {

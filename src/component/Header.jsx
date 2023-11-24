@@ -15,7 +15,7 @@ function Header() {
             branding, clever promotions, and online exposure services to shine a
             light on your brand.
           </p>
-          <a href="#">Let&apos;s Talk</a>
+          
         </div>
       </header>
     </React.Fragment>

@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 
 function Footer() {
   return (
@@ -27,7 +28,7 @@ function Footer() {
                   <ul className="flinkCont">
                     <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Career</a></li>
+                    <li><HashLink to="/career/#careerHead">Career</HashLink></li>
                     <li><a href="#">Contact Us</a></li>
                   </ul>
                  

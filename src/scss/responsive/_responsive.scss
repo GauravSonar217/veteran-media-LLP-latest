@@ -29,7 +29,7 @@
 
 // Medium devices (tablets, 768px and up)
 @mixin mediumDevice {
-  @media (min-width: 768px) and (max-width: 991.98px) {
+  @media (min-width: 768.98px) and (max-width: 991.98px) {
     @content;
   }
 }
@@ -42,7 +42,7 @@
 
 // Extra large devices (large desktops, 1200px and up)
 @mixin extraLargeDevice {
-  @media (min-width: 1281px) {
+  @media (min-width: 1440px) {
     @content;
   }
 }
@@ -53,18 +53,9 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-@mixin largeLaptop {
-  @media (max-width: 1160px) {
-      @content
+@mixin bigLaptop {
+  @media (min-width: 1281px) and (max-width: 1440px) {
+    @content;
   }
 }
 @mixin laptop {

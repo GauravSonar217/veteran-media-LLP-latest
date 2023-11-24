@@ -1,42 +1,344 @@
-/* TestimonialSlider.css */
-
-.testimonial-slider {
+.hero {
   width: 100%;
-  overflow: hidden;
+  height: 100vh;
+
+  @include flexrow;
+  flex-direction: column;
+  // align-items: start;
+  background-color: $light;
+
+
+  ::selection{
+    background-color: #f44336;
+    color: #fff;
+
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 2.5rem;
+    position: relative;
+    // margin-bottom: 80px;
+    text-align: center;
+    @include mediumDevice {
+      font-size: 2.2rem;
+      // margin-bottom: 1rem;
+    }
+    @include smallDevice {
+      font-size: 2rem;
+      // margin-bottom: 1rem;
+      text-align: center;
+    }
+    @include extraSmallDevice {
+      font-size: 2.2rem;
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+  }
+  .review-box {
+    width: 70%;
+    // max-width: 900px;
+    margin: 0 auto;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+
+
+    @include mediumDevice{
+      width: 100%;
+    }
+    @include smallDevice{
+      width: 100%;
+    }
+    @include extraSmallDevice{
+      width: 100%;
+      // height: 400px;
+    }
+
+    #slide {
+      width: 100%;
+      padding-right: 60px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: 0.5s;
+
+      
+
+      .card {
+        height: 300px;
+        padding: 40px;
+        // color: #fff;
+        line-height: 22px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+       
+        @include extraSmallDevice{
+          // width: 300px;
+          padding: 1rem;
+          width: 105%;
+        }
+        @include mobile{
+          // width: 300px;
+          padding: 1rem;
+          width: 110%;
+        }
+
+        &::before{
+          content: '';
+          width: 110px;
+          height: 110px;
+          border-bottom-right-radius: 100%;
+          background-color: #f44336;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          @include extraSmallDevice{
+            display: none;
+          }
+        }
+        p {
+          color: #000;
+          @include extraSmallDevice{
+            line-height: 1.1rem;
+          }
+          @include mobile{
+            line-height: 0.9rem;
+          }
+        }
+
+        .profile {
+          @include flexrow;
+          justify-content: start;
+          margin-bottom: 40px;
+      
+          @include mediumDevice{
+            margin-bottom: 2rem;
+          }
+          @include extraSmallDevice{
+            margin-bottom: 1rem;
+            align-items: start;
+          }
+          @include mobile{
+            margin-bottom: 0.5rem;
+            align-items: start;
+          }
+
+          img {
+            width: 70px;
+            border-radius: 50%;
+            margin-right: 20px;
+            @include extraSmallDevice{
+              width: 50px;
+            }
+          }
+          h3 {
+            font-size: 26px;
+            color: #f44336;
+            margin-bottom: 8px;
+            @include extraSmallDevice{
+              font-size: 1.1rem;
+              margin-bottom: 0.4rem;
+            }
+            @include mobile{
+              font-size: 1rem;
+              margin-bottom: 0.1rem;
+            }
+          }
+          p {
+            color: #000;
+            @include extraSmallDevice{
+              font-size: 0.9rem;
+              margin: 0;
+            }
+            @include mobile{
+              font-size: 0.8rem;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .sidebar{
+      width: 60px;
+      height: 100%;
+      padding: 15px 0;
+      background-color:#f44336 ;
+      position: absolute;
+      right: 0;
+      top: 0;
+      @include flexrow;
+      flex-direction: column;
+      justify-content: space-between;
+      @include extraSmallDevice{
+        width: 50px;
+      }
+      @include mobile{
+        width: 40px;
+      }
+
+
+      img{
+        width: 25px;
+        padding: 5px;
+        background: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-.testimonials-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  width: calc(100% + 20px); /* Adjust for scrollbar width */
-}
+// /*
+//   Inspired by the testimonials slider as seen on https://www.sellx.com/
+// */
+// @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.testimonial {
-  flex: 0 0 calc(33.33% - 20px); /* 33.33% width for each testimonial */
-  margin-right: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  transition: transform 0.3s ease;
-  height: 500px;
-}
+// html,
+// body {
+//   line-height: 1.15; /* 1 */
+//   -webkit-text-size-adjust: 100%; /* 2 */
+//   height: 100%;
+//   margin: 0;
+//   font-family: "Inter", sans-serif;
+// }
+// .testimonialSec {
+//   width: 100%;
+//   height: 100%;
+//   border: 1px solid red;
+//   overflow: hidden;
 
-.slider-controls {
-  margin-top: 20px;
-}
+//   .swiper {
+//     width: 100%;
+//     max-width: 980px;
+//     position: relative;
+//     background-color: black;
+//     border-radius: 2rem;
+//     margin: 0 auto;
+//   }
 
-.slider-controls button {
-  padding: 8px 16px;
-  margin: 0 5px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-}
+//   .swiper-quote {
+//     width: 70px;
+//     object-fit: contain;
+//     z-index: 100;
+//     margin-left: 2rem;
+//     margin-top: 2rem;
+//     user-select: none;
+//   }
 
-.slider-controls button:hover {
-  background-color: #0056b3;
-}
+//   .swiper-slide {
+//     background-color: black;
+//     color: #eee;
+//   }
+
+//   .swiper-slide-data {
+//     padding: 2rem;
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   .swiper-slide-data-text {
+//     font-size: 3.5rem;
+//     font-weight: 400;
+//     margin-bottom: 3rem;
+//   }
+
+//   .swiper-slide-data-info {
+//     display: flex;
+//   }
+
+//   .swiper-slide-data-info-img {
+//     width: 70px;
+//     min-width: 70px;
+//     height: 70px;
+//     min-height: 70px;
+//     border-radius: 70px;
+//     overflow: hidden;
+//     margin-right: 2rem;
+//   }
+
+//   .swiper-slide-data-info-img img {
+//     width: 100%;
+//     object-fit: cover;
+//     user-select: none;
+//   }
+
+//   .swiper-slide-data-info-author {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     font-size: 1.4rem;
+//   }
+
+//   .swiper-slide-data-info-author span {
+//     margin-top: 8px;
+//     color: #777;
+//     font-size: 0.85rem;
+//   }
+
+//   .swiper-navigation {
+//     position: absolute;
+//     bottom: 2rem;
+//     right: 2rem;
+//     display: flex;
+//   }
+
+//   .swiper-button-next,
+//   .swiper-button-prev {
+//     background-color: white;
+//     border: solid 2px white;
+//     transition: all 0.3s;
+//     width: 52px;
+//     height: 52px;
+//     border-radius: 52px;
+//     position: relative;
+//     left: auto;
+//     right: auto;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     overflow: hidden;
+//   }
+
+//   .swiper-button-next:hover,
+//   .swiper-button-prev:hover {
+//     background-color: black;
+//     border-color: #777;
+//   }
+
+//   .swiper-button-next:hover svg,
+//   .swiper-button-prev:hover svg {
+//     color: white;
+//   }
+
+//   .swiper-button-next::after,
+//   .swiper-button-prev::after {
+//     display: none;
+//   }
+
+//   .swiper-button-next svg,
+//   .swiper-button-prev svg {
+//     color: black;
+//     display: block;
+//     transform: scale(1.9);
+//   }
+//   .swiper-button-next svg path,
+//   .swiper-button-prev svg path {
+//     stroke-width: 1;
+//   }
+
+//   .swiper-button-next {
+//     margin-left: 8px;
+//   }
+// }

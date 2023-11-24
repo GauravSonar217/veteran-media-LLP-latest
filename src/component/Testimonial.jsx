@@ -1,88 +1,118 @@
-import React, { useState } from "react";
-// import './TestimonialSlider.css'; // Your CSS file for styling
+import React, { useEffect } from "react";
+import pic1 from "../media/jpg/pic1.jpg";
+import pic2 from "../media/jpg/pic2.jpg";
+import pic3 from "../media/jpg/pic3.jpg";
+import pic4 from "../media/jpg/pic4.jpg";
+import uparrow from "../media/png/up-arrow.png";
+import downarrow from "../media/png/down-arrow.png";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "John Doe",
-    testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    testimonial:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    name: "gaurav",
-    testimonial:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 4,
-    name: "divya",
-    testimonial:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 5,
-    name: "deepak",
-    testimonial:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 6,
-    name: "yashwant",
-    testimonial:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  // Add more testimonials as needed
-];
+function Testimonial() {
+  //   var upArrow = document.getElementById("uparrow");
+  //   console.log(slide);
+  //   console.log(upArrow);
+  //   console.log(dowArrow);
+  let x = 0;
 
-const TestimonialSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === testimonials.length - 1 ? 0 : prevSlide + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? testimonials.length - 1 : prevSlide - 1
-    );
-  };
+  function moveUp() {
+    var slide = document.getElementById("slide");
+    var dowArrow = document.getElementById("downarrow");
+    if (x > "-900") {
+      x = x - 300;
+      slide.style.top = x + "px";
+    }
+  }
+  function moveDown() {
+    var slide = document.getElementById("slide");
+    var dowArrow = document.getElementById("downarrow");
+    if (x < 0) {
+      x = x + 300;
+      slide.style.top = x + "px";
+    }
+  }
 
   return (
-    <div className="testimonial-slider">
-      <div className="testimonials-container">
-        {testimonials.map((testimonial, index) => {
-          let slideIndex = index - currentSlide;
-          if (slideIndex < 0) {
-            slideIndex = testimonials.length + slideIndex;
-          }
-          if (slideIndex > 2) {
-            return null;
-          }
-          return (
-            <div
-              key={testimonial.id}
-              className={`testimonial ${slideIndex === 1 ? "center" : ""}`}
-            >
-              <h3>{testimonial.name}</h3>
-              <p>{testimonial.testimonial}</p>
+    <React.Fragment>
+      <div className="hero sectionPadding">
+        <div className="container">
+          <div className="innerCont">
+            <h2>What they think</h2>
+            <div className="review-box">
+              <div id="slide">
+                <div className="card">
+                  <div className="profile">
+                    <img src={pic1} alt="" />
+                    <div>
+                      <h3>Riley Olie</h3>
+                      <p>Web Designer</p>
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Facilis sapiente similique unde totam minima voluptatum
+                    asperiores necessitatibus in temporibus accusamus nemo,
+                    sequi vitae obcaecati quae distinctio tenetur iusto illo
+                    
+                  </p>
+                </div>
+                <div className="card">
+                  <div className="profile">
+                    <img src={pic2} alt="" />
+                    <div>
+                      <h3>Steve McCurry</h3>
+                      <p>UI/UX Designer</p>
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Facilis sapiente similique unde totam minima voluptatum
+                    asperiores necessitatibus in temporibus accusamus nemo,
+                    sequi vitae obcaecati quae distinctio tenetur iusto illo
+                   
+                  </p>
+                </div>
+                <div className="card">
+                  <div className="profile">
+                    <img src={pic3} alt="" />
+                    <div>
+                      <h3>Merlin Nguyen </h3>
+                      <p>Senior Developer</p>
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Facilis sapiente similique unde totam minima voluptatum
+                    asperiores necessitatibus in temporibus accusamus nemo,
+                    sequi vitae obcaecati quae distinctio tenetur iusto illo
+                  </p>
+                </div>
+                <div className="card">
+                  <div className="profile">
+                    <img src={pic4} alt="" />
+                    <div>
+                      <h3>John Williams</h3>
+                      <p>Team Lead</p>
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Facilis sapiente similique unde totam minima voluptatum
+                    asperiores necessitatibus in temporibus accusamus nemo,
+                    sequi vitae obcaecati quae distinctio tenetur iusto illo
+                  
+                    
+                  </p>
+                </div>
+              </div>
+              <div className="sidebar">
+                <img id="uparrow" src={uparrow} alt="" onClick={moveUp} />
+                <img id="downarrow" src={downarrow} alt="" onClick={moveDown} />
+              </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
-      <div className="slider-controls">
-        <button onClick={prevSlide}>Previous</button>
-        <button onClick={nextSlide}>Next</button>
-      </div>
-    </div>
+    </React.Fragment>
   );
-};
+}
 
-export default TestimonialSlider;
+export default Testimonial;

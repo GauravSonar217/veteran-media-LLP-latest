@@ -1,227 +1,87 @@
 #faq {
   width: 100%;
-  // height: ;
-  border: 1px solid red;
-  #faqSection{
-    border: 1px solid blue;
+  height: 100%;
+  #faqSection {
     @include flexrow;
     flex-direction: column;
 
-    h4{
+    h4 {
       font-size: 1.25rem;
       text-align: center;
-      color: #B0B0C0;
+      color: #b0b0c0;
     }
     h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-    }
-    #faqCont{
-      border: 1px solid red;
-    }
-  }
-
-  a {
-      color: white;
-      text-decoration: underline;
-  }
-
-  .faq-card {
-      border: 1px solid #ccc;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 25px;
-      padding: 2rem 3.5rem;
-      border: 1px solid yellow;
-  }
-
-  .question {
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      border: 1px solid blue;
-      h3{
-        font-size: 1.25rem;
-        font-weight: 500;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      @include extraSmallDevice{
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
       }
-  }
+    }
+    #faqCont {
 
-  .answer {
-      display: none;
-      margin-top: 10px;
-      p{
-        font-size: 1.125rem;
+      .faq-card {
+        border: 1px solid #ccc;
+        margin-bottom: 1.5rem;
+        padding: 2rem 3.5rem;
+        border-radius: 40px;
+        border: 1px solid rgba(176, 176, 192, 0.3);
+        @include largeDevice{
+          padding: 1.5rem 2rem;
+        }
+        @include mediumDevice{
+          padding: 1.5rem 2.5rem;
+        }
+        @include extraSmallDevice{
+          padding: 1rem 1.3rem;
+        }
+
+
+        .question {
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            @include largeDevice{
+              font-size: 1.20rem;
+            }
+            @include extraSmallDevice{
+              font-size: 1.1rem;
+            }
+          }
+          .toggle {
+            background-color: black;
+            // padding: 5px 10px;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            @include flexrow;
+            @include extraSmallDevice{
+              width: 1.2rem;
+              height: 1.2rem;
+              padding: 0.9rem;
+            }
+
+            .icon {
+              font-size: 1.5rem;
+              color: white;
+              @include extraSmallDevice{
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+        .answer {
+          display: none;
+          margin-top: 10px;
+          p {
+            font-size: 1.125rem;
+          }
+        }
       }
-  }
-
-  .icon {
-      font-size: 20px;
-      color: white;
-  }
-
-  .toggle {
-      background-color: black;
-      padding: 5px 10px;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    }
   }
 }
-
-
-
-// .faqSection {
-//   width: 100%;
-//   height: 100%;
-
-//   #faqSec {
-//     width: 100%;
-//     height: 100%;
-
-//     #faqInner {
-//       width: 100%;
-//       text-align: center;
-
-//       h2 {
-//         font-size: 2.5rem;
-//         font-weight: 500;
-//         margin-bottom: 3rem;
-//       }
-//       h4 {
-//         font-size: 1.5rem;
-//       }
-
-//       .accordion {
-//         width: 100%;
-//         display: grid;
-//         grid-template-columns: repeat(2, 1fr);
-//         grid-gap: 2rem;
-//         @include largeDevice {
-//           grid-template-columns: repeat(1, 1fr);
-//           grid-gap: 1.5rem;
-//         }
-//         @include mediumDevice {
-//           grid-template-columns: repeat(1, 1fr);
-//           grid-gap: 1.5rem;
-//         }
-//         @include smallDevice {
-//           grid-template-columns: repeat(1, 1fr);
-//           grid-gap: 1.5rem;
-//         }
-//         @include extraSmallDevice {
-//           grid-template-columns: repeat(1, 1fr);
-//           grid-gap: 1.5rem;
-//         }
-
-//         .accr-content {
-//           border: 1px solid rgba(176, 176, 192, 0.3);
-//           border-radius: 1.5rem;
-//           padding: 1rem 1rem;
-//           box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-//             -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
-//           @include largeDevice {
-//             width: 90%;
-//             margin: 0 auto;
-//           }
-//           @include mediumDevice {
-//             width: 90%;
-//             margin: 0 auto;
-//           }
-//           @include smallDevice {
-//             width: 100%;
-//           }
-
-//           .accr-header {
-//             @include flexrow;
-//             justify-content: space-between;
-//             min-height: 2rem;
-//             padding: 0 1rem;
-//             cursor: pointer;
-//             transition: all 0.2s linear;
-//             @include smallDevice {
-//               padding: 0;
-//             }
-//             @include extraSmallDevice {
-//               padding: 0;
-//             }
-
-//             .title {
-//               font-size: 1.2rem;
-//               font-weight: 600;
-//               color: #333;
-//               text-align: left;
-//               @include smallDevice {
-//                 font-size: 1.1rem;
-//               }
-//               @include extraSmallDevice {
-//                 font-size: 0.95rem;
-//               }
-//             }
-//             img {
-//               @include extraSmallDevice {
-//                 width: 1.5rem;
-//               }
-//             }
-//           }
-//           .description {
-//             height: 0;
-//             padding: 0rem 1rem;
-//             font-size: 1.1rem;
-//             font-weight: 400;
-//             color: #333;
-//             transition: all 0.2s linear;
-//             text-align: left;
-//             overflow: hidden;
-//             @include extraSmallDevice {
-//               font-size: 0.9rem;
-//               padding: 0;
-//             }
-//             @include smallDevice {
-//               font-size: 1rem;
-//               padding: 0;
-//             }
-//           }
-//         }
-//         .accordion {
-       
-//           width: 100%;
-//           .faq {
-//             width: 100%;
-           
-         
-
-//             .accordion-item {
-//               width: 100%;
-//               // background-color: blue !important;
-
-//               .accordion-header {
-//                 // background-color: red !important;
-//                 font-size: 5rem !important;
-
-//                 .accordion-button {
-//                   width: 100%;
-
-//                   background-color: yellow !important;
-
-//                   &::after {
-//                     background-image: url(../media/png/plus.png);
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-
-//         .open {
-//           padding-bottom: 1rem;
-//           .accr-header {
-//             min-height: 3rem;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }

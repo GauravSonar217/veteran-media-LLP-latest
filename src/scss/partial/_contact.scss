@@ -1,35 +1,53 @@
 .contactSection {
   width: 100%;
-  height: 80vh;
+  height: 100%;
   position: relative;
-  border: 2px solid green;
   padding-top: 5rem;
-  @include largeDevice{
+  @include largeDevice {
     height: calc(100vh - 5rem);
+  }
+  @include extraLargeDevice {
+    height: calc(90vh - 5rem);
+  }
+  @include mediumDevice{
+    padding: 5rem 0;
+  }
+  @include smallDevice{
+    padding: 5rem 0;
+  }
+  @include extraSmallDevice{
+    padding: 5rem 0;
   }
 
   .contactMap {
     width: 100%;
     height: 100%;
-    position: relative ;
+    position: relative;
     z-index: 10;
     @include mediumDevice {
-      display: none;
+      width: 100%;
+      height: 30vh;
+      margin-bottom: 2rem;
     }
     @include smallDevice {
-      display: none;
+      width: 100%;
+      height: 40vh;
+      margin-bottom: 2rem;
     }
     @include extraSmallDevice {
-      display: none;
+      width: 100%;
+      height: 40vh;
+      margin-bottom: 2rem;
     }
   }
   .shadow {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 5rem);
     background-color: rgba(0, 0, 0, 0.753);
     position: absolute;
-    top: 0;
+    // top: 0;
     left: 0;
+    bottom: 0;
     z-index: 50;
     @include mediumDevice {
       display: none;
@@ -41,280 +59,319 @@
       display: none;
     }
   }
-  // #outerCont {
-  //   width: 100%;
-  //   height: 100%;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   z-index: 100;
-  //   border: 1px solid red;
-  // }
-  #contactInner {
-    width: 100%;
-    height: calc(100% - 5rem);
-    // padding-top: 5rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .contactForm {
+    width: 600px;
+    border-radius: 1rem;
+    padding: 2rem;
     position: absolute;
-    // top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 2px solid blue;
-    z-index: 150;
-
-    @include largeDevice{
-      width: 80%;
+    top: 3rem;
+    right: 16%;
+    bottom: -4rem;
+    background-color: $white;
+    border: 2px solid rgba(176, 176, 192, 0.3);
+    // border: 1px solid blue;
+    z-index: 10000;
+    @include extraLargeDevice {
+      right: 8%;
+    }
+    @include largeDevice {
+      right: 8%;
     }
     @include mediumDevice {
-      grid-template-columns: repeat(1, 1fr);
+      width: 80%;
+      position: static;
+      margin: 0 auto;
     }
     @include smallDevice {
-      grid-template-columns: repeat(1, 1fr);
+      width: 80%;
+      position: static;
+      margin: 0 auto;
     }
     @include extraSmallDevice {
-      grid-template-columns: repeat(1, 1fr);
+      width: 100%;
+      position: static;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
     }
 
-    .contactTextBox {
-      // border: 1px solid red;
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      @include extraLargeDevice {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+      }
+      @include largeDevice {
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+      }
+     
+      @include mediumDevice {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      @include smallDevice {
+        font-size: 2.3rem;
+        margin-bottom: 2rem;
+      }
+      @include extraSmallDevice {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      @include bigLaptop {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+    form {
+      width: 100%;
       @include flexrow;
       flex-direction: column;
       align-items: start;
-      justify-content: space-between;
-      padding: 2rem 0;
-      @include mediumDevice {
-        display: none;
-      }
-      @include smallDevice {
-        display: none;
-      }
-      @include extraSmallDevice {
-        display: none;
-      }
-
-      h3 {
+     
+      position: relative;
+      
+      label {
         font-size: 1rem;
-        font-weight: 400;
-        padding: 0.6rem 1rem;
-        background-color: $black;
-        border-radius: 1.5rem;
-        p {
-          color: $white;
-          display: inline;
-          cursor: pointer;
+      }
+      input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 0.8rem;
+        font-size: 1.1rem;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid $black;
+      
+        @include mediumDevice {
+          margin-bottom: 1rem;
         }
-        img {
-          margin-left: 2rem;
+        @include smallDevice {
+          margin-bottom: 1rem;
+        }
+        @include extraLargeDevice {
+          margin-bottom: 1rem;
+        }
+        @include largeDevice {
+          margin-bottom: 2rem;
+        }
+        @include bigLaptop{
+          margin-bottom: 1rem;
+        }
+        @include extraSmallDevice {
+          margin-bottom: 1rem;
         }
       }
-
-      .contactText {
-        width: 80%;
-
-        color: $white;
-        padding: 1rem;
+      textarea {
+        width: 100%;
         border-radius: 1rem;
+        padding: 1rem 2rem;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid $black;
+      }
+      .uploadCont {
+        width: 100%;
+        margin: 5rem 0;
+        @include flexrow;
+        justify-content: space-between;
+        position: relative;
+        @include extraLargeDevice {
+          padding: 1rem 0;
+        }
+        @include largeDevice {
+          padding: 1rem 0;
+        }
+        @include mediumDevice {
+          padding: 1rem 0;
+          margin: 3rem 0;
+        }
+        @include smallDevice {
+          padding: 1rem 0;
+          margin: 2.5rem 0;
 
-        h2 {
+        }
+        @include extraSmallDevice {
+          padding: 1rem 0;
+          margin: 2rem 0;
+        }
+
+        #myFile {
+          width: 40%;
+          border: none;
+          margin: 0;
+          padding: 0.5rem;
+        }
+        button {
+          font-size: 1.1rem;
+          padding: 1.3em 0;
+          padding-left: 3em;
+          padding-right: 8em ;
+          background-color: $black;
           color: $white;
+          border: none;
+          border-radius: 1rem;
+          @include flexrow;
+          position: absolute;
+          right: -3.5rem;
+          @include mediumDevice {
+            position: relative;
+            padding: 1rem 2rem;
+            right: 0;
+          }
+          @include smallDevice {
+            position: relative;
+            right: 0;
+            padding: 1rem 2rem;
+            right: 0;
+          }
+          @include extraSmallDevice {
+            position: relative;
+            right: 0;
+            padding: 1rem 1.2rem;
+            font-size: 0.9rem;
+
+          }
+          // @include mobile {
+          //   padding: 0.4rem 0.8rem;
+          //   font-size: 0.7rem;
+          // }
+
+          &::after {
+            content: "";
+            width: 3rem;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            border-bottom: 2px solid #fff;
+
+            @include mediumDevice {
+              display: none;
+            }
+            @include smallDevice {
+              display: none;
+            }
+            @include extraSmallDevice {
+              display: none;
+            }
+          }
         }
       }
     }
-    .contactFormCont {
-      height: 100%;
-      border: 1px solid red;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.6rem 1rem;
+    background-color: $black;
+    border-radius: 1.5rem;
+    z-index: 1000;
+    position: absolute;
+    top: 8rem;
+    left: 16%;
+    p {
+      color: $white;
+      display: inline;
+      cursor: pointer;
+    }
+    img {
+      margin-left: 2rem;
+    }
+    @include extraLargeDevice {
+      left: 8%;
+    }
+    @include largeDevice {
+      left: 8%;
+    }
+    @include mediumDevice {
+      display: none;
+    }
+    @include smallDevice {
+      display: none;
+    }
+    @include extraSmallDevice {
+      display: none;
+    }
+  }
+  .contactTextBox {
+    width: 30%;
+    @include flexrow;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding: 2rem 0;
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    left: 16%;
+   
+    @include extraLargeDevice {
+      left: 8%;
+    }
+    @include largeDevice {
+      left: 8%;
+    }
+    @include mediumDevice {
       position: relative;
+      width: 90%;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      padding: 0;
+      text-align: center;
+    }
+    @include smallDevice {
+      position: relative;
+      width: 90%;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      padding: 0;
+      text-align: center;
+    }
+    @include extraSmallDevice {
+      position: relative;
+      width: 90%;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      padding: 0;
+      text-align: center;
+    }
+    .contactText {
+      width: 100%;
+      color: $white;
+      padding: 1rem;
+      border-radius: 1rem;
+    
+      @include extraLargeDevice {
+        width: 100%;
+      }
       @include mediumDevice {
         width: 100%;
-        // height: 80vh;
-        margin: 0 auto;
+        background-color: $black;
       }
       @include smallDevice {
         width: 100%;
-        margin: 0 auto;
+        background-color: $black;
       }
       @include extraSmallDevice {
         width: 100%;
-        @include flexrow;
+        background-color: $black;
       }
 
-      .contactForm {
-        width: 100%;
-        // height: 100%;
-        border: 1px solid red;
-        @include flexrow;
-        flex-direction: column;
-        align-items: start;
-        border-radius: 1rem;
-        padding: 2rem;
-        position: absolute;
-        top: -6%;
-        right: 0;
-        bottom: -10%;
-        background-color: $white;
-        border: 2px solid rgba(176, 176, 192, 0.3);
-        // border: 1px solid blue;
-        z-index: 1000;
-        @include mediumDevice {
-          width: 100%;
-          height: calc(80vh - 20px);
-          padding: 1rem 0;
-          position: static;
+      h2 {
+        color: $white;
+        @include mediumDevice{
+          margin-bottom: 1rem;
         }
-        @include smallDevice {
-          height: 100%;
-          padding: 1rem 2rem;
-          position: static;
-        }
-        @include extraSmallDevice {
-          // height: 100%;
-          padding: 0.5rem 1.5rem;
-          position: static;
-        }
-
-        h2 {
-          font-size: 2rem;
-          font-weight: 500;
-          margin-bottom: 2rem;
-          @include mediumDevice {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-          }
-          @include smallDevice {
-            margin-bottom: 1rem;
-          }
-          @include extraSmallDevice {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-          }
-        }
-        form {
-          width: 100%;
-          @include flexrow;
-          flex-direction: column;
-          align-items: start;
-          // justify-content: space-between;
-          label {
-            font-size: 1rem;
-            // @include mediumDevice {
-            //   font-size: 1.2rem;
-            // }
-            // @include smallDevice {
-            //   font-size: 1rem;
-            // }
-            // @include extraSmallDevice {
-            //   font-size: 1rem;
-            // }
-          }
-          input {
-            width: 100%;
-            padding: 1rem 2rem;
-            border-radius: 0.8rem;
-            font-size: 1.1rem;
-            border: none;
-            outline: none;
-            border-bottom: 2px solid $black;
-            &:not(:last-child) {
-              margin-bottom: 1rem;
-            }
-            // @include largeDevice {
-            //   padding: 0.5rem 1rem;
-            // }
-            // @include mediumDevice {
-            //   padding: 0.3rem 1rem;
-            // }
-            // @include smallDevice {
-            //   padding: 0.3rem 1rem;
-            // }
-            // @include extraSmallDevice {
-            //   padding: 0.2rem 1rem;
-            // }
-          }
-          textarea {
-            width: 100%;
-            border-radius: 1rem;
-            padding: 1rem 2rem;
-            border: none;
-            outline: none;
-            border-bottom: 2px solid $black;
-          }
-          .uploadCont {
-            width: 100%;
-            padding: 2rem 0;
-            @include flexrow;
-            justify-content: space-between;
-            border: 1px solid blue;
-            @include mediumDevice {
-              padding: 1rem 0;
-            }
-            @include smallDevice {
-              padding: 1rem 0;
-            }
-            @include extraSmallDevice {
-              // padding: 1rem 0;
-            }
-
-            #myFile {
-              width: 50%;
-              border: none;
-              background-color: red;
-              margin: 0;
-            }
-            button {
-              padding: 1rem 2rem;
-              padding-right: 5rem;
-              background-color: $black;
-              color: $white;
-              border-radius: 1rem;
-              position: relative;
-              @include flexrow;
-              @include largeDevice {
-                padding: 0.8rem 2rem;
-              }
-              @include mediumDevice {
-                padding: 0.8rem 2rem;
-              }
-              @include smallDevice {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-              }
-              @include extraSmallDevice {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-              }
-              @include mobile {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.7rem;
-              }
-
-              &::after {
-                content: "";
-                width: 2rem;
-                border: 1px solid #fff;
-                position: absolute;
-                top: 50%;
-                right: 15%;
-                border-bottom: 2px solid #fff;
-
-                @include largeDevice {
-                  display: none;
-                }
-                @include mediumDevice {
-                  display: none;
-                }
-                @include smallDevice {
-                  display: none;
-                }
-                @include extraSmallDevice {
-                  display: none;
-                }
-              }
-            }
-          }
-        }
+      
       }
     }
   }

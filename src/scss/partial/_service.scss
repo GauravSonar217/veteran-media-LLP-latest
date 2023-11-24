@@ -40,7 +40,11 @@
           margin: 0 auto;
         }
         @include smallDevice {
-          width: 100%;
+          width: 70%;
+          margin: 0 auto;
+        }
+        @include extraSmallDevice {
+          width: 90%;
           margin: 0 auto;
         }
         img {
@@ -82,7 +86,6 @@
         }
 
         .serve {
-          border: 1px solid red;
           @include smallDevice {
             text-align: center;
             padding: 0 3rem;
